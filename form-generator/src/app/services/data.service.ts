@@ -9,7 +9,7 @@ import { FormControl } from '../models/form-control';
 })
 export class DataService extends BaseService {
 
-  api = 'http://localhost:4000/';
+  api = window.location.protocol + '//' + window.location.hostname + ':4000/';
   result: string;
   formulas: string[] = new Array<string>();
   controlIds: string[] = new Array<string>();
