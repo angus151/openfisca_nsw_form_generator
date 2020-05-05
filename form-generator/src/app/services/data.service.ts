@@ -38,7 +38,7 @@ export class DataService extends BaseService {
                 // this.result += `control: <br/> Type: ${v.valueType} <br/> Description: ${v.description} <br/><br/><hr>`;
                 this.controlIds.push(v.id);
                 this.controls.push(v as FormControl);
-                console.log(`Adding control: ${v.id}`)
+                console.log(`Adding control: ${v.id}`);
               }
             }
           },
