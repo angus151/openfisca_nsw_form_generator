@@ -1,0 +1,11 @@
+{
+  "name": "openfisca_nsw_dynamic_forms",
+  "version": "1.0.0",
+  "description": "Dynamically generate Angular UI form for a given openfisca API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
