@@ -1,27 +1,38 @@
 # FormGenerator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Docker
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`docker build -t webui . --no-cache`
 
-## Build
+Then
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`docker run -d -t -p 4200:4200 --name=webui webui`
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Host
+Set-VMProcessor -ExposeVirtualizationExtensions $true
 
-## Running end-to-end tests
+VM
+# next two are waste of time
+Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
+Enable-WindowsOptionalFeature -Online -FeatureName  Microsoft-Hyper-V-Management-PowerShell
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+NO
+Install-Module DockerProvider
+NO
+Install-Package Docker -ProviderName DockerProvider -RequiredVersion preview
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+YES
+[Environment]::SetEnvironmentVariable("LCOW_SUPPORTED", "1", "Machine")
+
+
+https://www.altaro.com/msp-dojo/linux-containers-windows-server-2019/
+
+
+https://computingforgeeks.com/how-to-run-docker-containers-on-windows-server-2019/
+https://redmondmag.com/articles/2018/11/16/installing-hyperv-module-for-powershell.aspx
