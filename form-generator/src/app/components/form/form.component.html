@@ -1,16 +1,27 @@
 <h2>{{variable}}</h2>
 
-<form (ngSubmit)="onSubmit()" class="nsw-forms">
+<form (ngSubmit)="onSubmit()" class="nsw-forms" [formGroup]="racForm">
   <div *ngFor="let ctl of dataService.controls" class="nsw-form-group">
-    <app-dropdown [control]="ctl" *ngIf="ctl.possibleValues" [model]="model"></app-dropdown>
-    <app-string [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'String'"></app-string>
-    <app-float [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Float'"></app-float>
-    <app-boolean [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Boolean'"></app-boolean>
-    <app-date [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Date'"></app-date>
-    <app-int [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Int'"></app-int>
+    <app-dropdown [control]="ctl" *ngIf="ctl.possibleValues"></app-dropdown>
+    <app-string [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'String'">
+    </app-string>
+    <app-float [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Float'">
+    </app-float>
+    <app-boolean [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Boolean'">
+    </app-boolean>
+    <app-date [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Date'">
+    </app-date>
+    <app-int [control]="ctl" *ngIf="!ctl.possibleValues && ctl.valueType === 'Int'">
+    </app-int>
+  </div>
+
+  <div class="nsw-form-group" *ngIf="result && result !== ''">
+    <h2>Result</h2>
+    {{ result }}
   </div>
   <div>
     <button class="nsw-button nsw-button--primary" type="submit">Submit</button>
+    <button class="nsw-button nsw-button--primary" type="button" (click)="setValues()">Set Data</button>
     <button class="nsw-button nsw-button--primary" type="button" (click)="testSubmit()">Test</button>
   </div>
 </form>

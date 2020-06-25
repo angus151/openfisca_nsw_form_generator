@@ -1,18 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from 'src/app/models/form-control';
+import { Component } from '@angular/core';
+import { BaseControl } from 'src/app/models/base-control';
 
 @Component({
   selector: 'app-string',
   templateUrl: './string.component.html',
   styleUrls: ['./string.component.scss']
 })
-export class StringComponent implements OnInit {
-
-  @Input() public control: FormControl;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class StringComponent extends BaseControl<string>  {
 
 }

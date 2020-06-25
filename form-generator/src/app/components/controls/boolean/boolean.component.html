@@ -3,9 +3,9 @@
     <span class="nsw-form-legend-text">{{control.description}}</span>
   </legend>
   <div class="nsw-form-radio">
-    <input class="nsw-form-radio__input" type="radio" name="{{control.id}}" id="{{control.id + '-yes'}}" value="true">
+    <input class="nsw-form-radio__input" type="radio" name="{{control.id}}" id="{{control.id + '-yes'}}" value="true" [checked]="control.value == true" (change)="onChange($event)">
     <label class="nsw-form-radio__label" for="{{control.id + '-yes'}}">Yes</label>
-    <input class="nsw-form-radio__input" type="radio" name="{{control.id}}" id="{{control.id + '-no'}}" value="false">
+    <input class="nsw-form-radio__input" type="radio" name="{{control.id}}" id="{{control.id + '-no'}}" value="false" [checked]="control.value == false" (change)="onChange($event)">
     <label class="nsw-form-radio__label" for="{{control.id + '-no'}}">No</label>
   </div>
 </fieldset>

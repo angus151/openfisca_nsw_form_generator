@@ -1,19 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from 'src/app/models/form-control';
+import { Component, Input } from '@angular/core';
+import { BaseControl } from 'src/app/models/base-control';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent extends BaseControl<string> {
 
-  @Input() public control: FormControl;
-  @Input() public model: any[];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

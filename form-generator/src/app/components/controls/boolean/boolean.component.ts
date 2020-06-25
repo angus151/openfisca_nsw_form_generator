@@ -1,21 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BaseControlDirective } from '../base-control.directive';
-import { FormControl } from 'src/app/models/form-control';
+import { Component } from '@angular/core';
+import { BaseControl } from 'src/app/models/base-control';
 
 @Component({
   selector: 'app-boolean',
   templateUrl: './boolean.component.html',
   styleUrls: ['./boolean.component.scss']
 })
-export class BooleanComponent extends BaseControlDirective implements OnInit {
-
-  @Input() public control: FormControl;
-
-  constructor() {
-    super();
-  }
-
-  ngOnInit(): void {
-  }
+export class BooleanComponent extends BaseControl<string> {
 
 }

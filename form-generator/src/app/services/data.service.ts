@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
-import { FormControl } from '../models/form-control';
+import { RacFormControl } from '../models/form-control';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,64 @@ export class DataService extends BaseService {
   result: string;
   formulas: string[] = new Array<string>();
   controlIds: string[] = new Array<string>();
-  controls: FormControl[] = new Array<FormControl>();
+  controls: RacFormControl<any>[] = new Array<RacFormControl<any>>();
 
   constructor(private http: HttpClient) {
     super();
   }
 
+  public data =
+    {
+      persons: {
+        Alicia: {
+          birth: {
+            ETERNITY: '1980-01-01'
+          }
+        }
+      },
+      buildings: {
+        building1: {
+          building_type_status: { 2020: 'office' },
+          all_on_site_sources_identified: { 2020: true },
+          unaccounted_elec_metered_and_recorded: { 2020: true },
+          ESC_creation_date: { 2020: '2020-02-15' },
+          current_NABERS_star_rating: { 2020: 5.5 },
+          built_after_nov_2006: { 2020: false },
+          first_nabers_rating: { 2020: true },
+          rating_not_obt_for_legal_requirement: { 2020: true },
+          historical_baseline_no_more_than_7_years_before_current_rating: {
+            2020: true
+          },
+          historical_baseline_rating_meets_similar_configuration_criteria: {
+            2020: true
+          },
+          nabers_value_previously_used_to_set_historical_NABERS_rating: {
+            2020: false
+          },
+          nabers_value_lower_than_previous_historical_NABERS_value: {
+            2020: false
+          },
+          end_date_of_current_nabers_rating_period: { 2020: '2020-10-11' },
+          rating_type: { 2020: 'base_building' },
+          postcode: { 2020: 6000 },
+          hours_per_week_with_20_percent_occupancy: { 2020: 44.3 },
+          building_state_location: { 2020: 'WA' },
+          net_lettable_area: { 2020: 2637.7 },
+          number_of_computers: { 2020: 0 },
+          method_one_can_be_used: { 2020: true },
+          elec_kWh: { 2020: 180399.1 },
+          gas_in_MJ: { 2020: 101377.6 },
+          diesel_in_litres: { 2020: 0 },
+          coal_in_KG: { 2020: 0 },
+          benchmark_elec_consumption_MWh: { 2020: 0 },
+          number_of_certificates: { 2020: null }
+        }
+      }
+    };
+
   getFormControls(variable: string) {
     if (variable === 'datetime64[D]' || variable === 'datetime64[Y]' || variable === 'str'
-    || variable === 'whole_building'  || variable === 'base_building'  || variable === 'tenancy'
+      || variable === 'whole_building' || variable === 'base_building' || variable === 'tenancy'
     ) {
       return;
     }
@@ -37,7 +86,8 @@ export class DataService extends BaseService {
               if (!this.controlIds.includes(v.id)) {
                 // this.result += `control: <br/> Type: ${v.valueType} <br/> Description: ${v.description} <br/><br/><hr>`;
                 this.controlIds.push(v.id);
-                this.controls.push(v as FormControl);
+                const ctl = v as RacFormControl<any>;
+                this.controls.push(ctl);
                 console.log(`Adding control: ${v.id}`);
               }
             }
@@ -122,5 +172,13 @@ export class DataService extends BaseService {
     } else {
       return null;
     }
+  }
+
+  testCalculate(): Observable<any> {
+    return this.http.post<any>(`${this.api}calculate/`, this.data);
+  }
+
+  calculateResult(data: any): Observable<any> {
+    return this.http.post<any>(`${this.api}calculate/`, data);
   }
 }

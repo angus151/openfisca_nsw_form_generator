@@ -8,14 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { TextfieldComponent } from './components/controls/textfield/textfield.component';
 import { BaseControlDirective } from './components/controls/base-control.directive';
 import { DropdownComponent } from './components/controls/dropdown/dropdown.component';
-import { CheckboxComponent } from './components/controls/checkbox/checkbox.component';
-import { RadioComponent } from './components/controls/radio/radio.component';
 import { BooleanComponent } from './components/controls/boolean/boolean.component';
 import { StringComponent } from './components/controls/string/string.component';
 import { FloatComponent } from './components/controls/float/float.component';
 import { DateComponent } from './components/controls/date/date.component';
 import { IntComponent } from './components/controls/int/int.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -25,8 +23,6 @@ import { HomeComponent } from './components/home/home.component';
     TextfieldComponent,
     BaseControlDirective,
     DropdownComponent,
-    CheckboxComponent,
-    RadioComponent,
     BooleanComponent,
     StringComponent,
     FloatComponent,
@@ -38,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
