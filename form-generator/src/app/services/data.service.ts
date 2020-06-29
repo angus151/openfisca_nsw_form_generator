@@ -51,7 +51,7 @@ export class DataService extends BaseService {
             2020: false
           },
           end_date_of_current_nabers_rating_period: { 2020: '2020-10-11' },
-          rating_type: { 2020: 'base_building' },
+          rating_type_status: { 2020: 'base_building' },
           postcode: { 2020: 6000 },
           hours_per_week_with_20_percent_occupancy: { 2020: 44.3 },
           building_state_location: { 2020: 'WA' },
@@ -62,7 +62,7 @@ export class DataService extends BaseService {
           gas_in_MJ: { 2020: 101377.6 },
           diesel_in_litres: { 2020: 0 },
           coal_in_KG: { 2020: 0 },
-          benchmark_elec_consumption_MWh: { 2020: 0 },
+          // benchmark_elec_consumption_MWh: { 2020: 0 },
           number_of_certificates: { 2020: null }
         }
       }

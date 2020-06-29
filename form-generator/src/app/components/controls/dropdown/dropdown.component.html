@@ -1,5 +1,5 @@
 <label for="{{control.id}}" class="nsw-form-label">{{control.description}}:</label>
 <select id="{{control.id}}" class="nsw-form-select" [name]="control.id" (change)="onChange($event)">
   <option value="">Please select</option>
-  <option *ngFor="let v of control.possibleValues | keyvalue" [value]="v.key">{{v.value}}</option>
+  <option *ngFor="let v of control.possibleValues | keyvalue" [value]="v.key" [selected]="v.key == control.value">{{v.value}}</option>
 </select>
