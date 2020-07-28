@@ -37,6 +37,7 @@ export class DataService extends BaseService {
           current_NABERS_star_rating: { 2020: 5.5 },
           built_after_nov_2006: { 2020: false },
           first_nabers_rating: { 2020: true },
+          includes_GreenPower: { 2020: false },
           rating_not_obt_for_legal_requirement: { 2020: true },
           historical_baseline_no_more_than_7_years_before_current_rating: {
             2020: true
