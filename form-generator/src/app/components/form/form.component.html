@@ -15,7 +15,7 @@
     </app-int>
   </div>
 
-  <div class="nsw-form-group" *ngIf="result && result !== ''">
+  <div class="nsw-form-group" *ngIf="(result && result !== '') || result == '0.0'">
     <h2>Result</h2>
     {{ result }}
   </div>

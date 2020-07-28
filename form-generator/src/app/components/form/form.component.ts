@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
     const dropdowns = this.dropdowns.map(o => ({ key: o.control.id, value: o.control.value }));
     const strings = this.strings.map(o => ({ key: o.control.id, value: o.control.value }));
     const floats = this.floats.map(o => ({ key: o.control.id, value: o.control.value }));
-    const booleans = this.booleans.map(o => ({ key: o.control.id, value: o.control.value }));
+    const booleans = this.booleans.map(o => ({ key: o.control.id, value: o.control.value && o.control.value.toString().toLowerCase() === 'true' }));
     const dates = this.dates.map(o => ({ key: o.control.id, value: o.control.value }));
     const ints = this.ints.map(o => ({ key: o.control.id, value: o.control.value }));
 
