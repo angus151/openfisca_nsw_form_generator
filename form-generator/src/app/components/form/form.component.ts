@@ -9,6 +9,7 @@ import { FloatComponent } from '../controls/float/float.component';
 import { BooleanComponent } from '../controls/boolean/boolean.component';
 import { DateComponent } from '../controls/date/date.component';
 import { RacFormControl } from 'src/app/models/form-control';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-form',
@@ -131,7 +132,12 @@ export class FormComponent implements OnInit {
   }
 
   buildBuilding(keyValues: any, originalValues: any): any {
-    return keyValues.reduce((o, a) => Object.assign(o, { [a.key]: { 2020: a.value } }), originalValues);
+    return keyValues.reduce((o, a) => Object.assign(o, {
+      [a.key]: a.value !== '' && a.value !== null && a.value !== undefined
+        && a.value === a.value
+        ? { 2020: a.value }
+        : {}
+    }), originalValues);
   }
 
   onSubmit() {

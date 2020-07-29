@@ -1,2 +1,2 @@
 <label [for]="control.id" class="nsw-form-label">{{ control.description }}</label>
-<input [id]="control.id" [name]="control.id" [(value)]="control.value" (keyup)="onChange($event)" class="nsw-form-input" type="number" required>
+<input [id]="control.id" [name]="control.id" [(value)]="control.value" (change)="onChange($event)" class="nsw-form-input" type="number" required>
